@@ -1,0 +1,139 @@
+.btn-img {
+  width: 125px;
+  height: 125px;
+}
+
+.fa-times {
+  color: red;
+}
+
+.fa-check {
+  color: green;
+}
+.navbar{
+  border-radius: 0;
+}
+.navbar-brand img{
+  max-height: 40px;
+}
+h1{
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+/*.img-holder {position: relative;}
+
+.img-holder .right-link {
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+}
+.img-holder .left-link {
+    position: absolute;
+    top: 10px; 
+    left: 10px; 
+}*/
+
+.dropdownGenre{
+  display: inline-block;
+}
+
+.dropdown{
+  display: inline-block;
+}
+.actors_search{
+  display: inline-block;
+}
+.main_head{
+  color: white;
+  font-family: monospace;
+  font-size: 50px;
+  font-weight: 500;
+  text-align: center;
+}
+body{
+  background-color: black;
+}
+.movie-image{
+  width: 250px;
+/*  height: 370px;*/
+}
+.title{
+  color: white;
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+  font-size: 30px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  filter: brightness(60%)
+}
+.genre{
+  color: white;
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+  font-size: 20px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  filter: brightness(60%)
+}
+.overview{
+  color: white;
+/*  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+  font-size: 15px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 100;
+  filter: brightness(60%)*/
+}
+.actor_input{
+  display: inline-block;
+  margin-left: 15px;
+}
+/*.navbar{
+  margin-top: 10px;
+  text-align: center;
+  display: inline-block;
+}*/
+.button_section{
+  background: url("http://static5.thisisinsider.com/image/573cbcd280228019008b4889-2400/13_03_15_electric_portobello%2011676-final.jpg") no-repeat center fixed;
+  background-size: cover;
+  min-height: 300px; 
+}
+.movie-item{
+  height: 350;
+
+}
+
+
+
+
+
+
+/*("http://www.davidokeefe.com/Images/Products/Large/GF2%20web.jpg")*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.row:before {
+  display: table;
+  content: "";
+}
+
+.row:after {
+  display: table;
+  content: "";
+  clear: both;
+}

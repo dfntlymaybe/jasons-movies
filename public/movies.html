@@ -1,0 +1,21 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6 movie-item" ng-repeat="movie in suggestedMovies track by $index">
+          <h2 class="title">{{movie.title}}</h2>
+          <div class="col-md-6">
+            <img src="{{movie.img}}" class="movie-image img-thumbnail"/>
+            <button type="button" class="btn btn-link pull-right" ng-click="btnRemove(movie)"><i class="fa fa-times fa-4x" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-link pull-left" ng-click="btnChoose(movie)"><i class="fa fa-check fa-4x" aria-hidden="true"></i></button>
+          </div>
+          <div class="col-md-6 overview">
+            <h3>Genre: {{movie.genre}}</h3>
+            <h4>Released on: {{movie.release_date}}</h4>
+            <h4>Description:</h4><p>{{movie.overview}}</p>
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </div> 
+

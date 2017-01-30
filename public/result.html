@@ -1,0 +1,19 @@
+
+  <div class="container">
+    <div class="row" ng-model="selectedMovie">
+<!--       <div class="col-md-12"> -->
+        <h1>Don't forget your popcorn, here is your chosen movie:</h1>
+        <hr>
+        <div class="col-md-4 selected-movie-item" >
+          <img class="movie-image img-thumbnail" src="{{selectedMovie.img}}">
+          </div>
+        <div class="col-md-6 selected-movie-item" >        
+          <h2 class="title">{{selectedMovie.title}}</h2>
+          <h3 class="overview"><span style="font-weight: bold;">Genre:</span> {{selectedMovie.genre}}</h3>
+          <h4 class="overview"><span style="font-weight: bold;">Released on:</span> {{selectedMovie.release_date}}</h4>
+          <h5 class="overview"><span style="font-weight: bold;">Description:</span> {{selectedMovie.overview}}</h5>
+          
+        </div> 
+<!--       </div>  -->
+    </div> 
+  </div> 
