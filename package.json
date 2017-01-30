@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AllonSegall/proj#readme",
   "dependencies": {
     "angular": "^1.5.9",
+    "angular-loading-bar": "^0.9.0",
     "angular-ui-router": "^0.4.2",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
