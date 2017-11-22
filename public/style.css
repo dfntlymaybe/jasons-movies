@@ -16,6 +16,10 @@
 .navbar-brand img{
   max-height: 40px;
 }
+.navbar-default .navbar-brand{
+  color: #e50914;
+  font-size: 150%;
+}
 h1{
   color: #fff;
   font-weight: bold;
@@ -41,7 +45,14 @@ h1{
 
 .dropdown{
   display: inline-block;
+  font-weight: bold;
+  font-size: 150%;
 }
+.dropdown button{
+  margin-left: 20px;
+  margin-top: 8px;
+}
+
 .actors_search{
   display: inline-block;
 }
