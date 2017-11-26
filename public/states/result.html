@@ -11,7 +11,7 @@
           <h2 class="title">{{selectedMovie.title}}</h2>
           <h3 class="overview"><span style="font-weight: bold;">Genre:</span> {{selectedMovie.genre}}</h3>
           <h3 class="overview"><span style="font-weight: bold;">Released on:</span> {{selectedMovie.release_date}}</h3>
-          <h3 class="overview"><span style="font-weight: bold;">Description: </span><small>{{selectedMovie.overview}}</small></h3>
+          <h3 class="overview"><span style="font-weight: bold;">Description: </span><small>{{selectedMovie.overview | limitTo : 400}}<span ng-if="selectedMovie.overview.length>300" title="{{selectedMovie.overview}}">...</span></small></h3>
           
         </div> 
       </div> 

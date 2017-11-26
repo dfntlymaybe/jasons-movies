@@ -133,10 +133,10 @@ li.dropdown.active.open,
 }
 .home_main_section{
   background: url(images/cinema_main_image.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-size: cover;
   min-height: 300px; 
 }

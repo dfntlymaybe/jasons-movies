@@ -5,7 +5,7 @@
 
 
 app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$state', function($scope, moviesService, $window, $state){
-
+  //Scopes
   $scope.pickedActor = false;
   $scope.pickedGenre = false;
   $scope.selectedMovie =  moviesService.movie;
@@ -14,7 +14,7 @@ app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$sta
   $scope.error = moviesService.error;
   $scope.rendomizeExpression = moviesService.searchExpression;
  
-
+  //Get genre list a split it to 3 columns
   moviesService.getGenreList().then(function () {
     $scope.genreOptions = moviesService.genre;
     $scope.firstColGenreOptions = moviesService.genre.slice(0, Math.round(moviesService.genre.length/3));
