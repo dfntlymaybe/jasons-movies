@@ -8,7 +8,9 @@
 .fa-times {
   color: red;
 }
-
+.icon-bar{
+  background-color:#FF0A16;
+}
 .fa-check {
   color: green;
 }
@@ -148,10 +150,17 @@ body{
   width: 100%;
   height: 300px;
 }
+.result-movie-image{
+  width: 80%;
+  height: 350px;
+}
 /*.movie-image:hover{
   transform: scale(1.2);
   transform-origin: center;
 }*/
+.results-title{
+  margin:0;
+}
 .title{
   color: white;
   font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";

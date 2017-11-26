@@ -25,6 +25,7 @@ app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$sta
   $scope.reset = function(){
     $scope.pickedActor = false;
     $scope.pickedGenre = false;
+    $scope.actorModel = "";
   }
   $scope.showGenre = function(){
     // moviesService.emptyMoviesPull();
@@ -56,20 +57,20 @@ app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$sta
     if(moviesService.byGenre){ //Getting movies by Genre
       if($scope.selectedGenre.id === 0){
         $scope.error = {isError:true , error:"Please Select Genre"};
-        // alert("Please Select Genre");
         return;
       }else{
-        moviesService.getMoviesByGenre($scope.selectedGenre); 
+        moviesService.getMoviesByGenre($scope.selectedGenre);
+        $scope.reset(); 
       }
     }else{ //Getting movies by Actor
       if($scope.actorModel === ""){
         $scope.error = {isError:true , error:"Please type actor name"};
-        // alert("Please type actor name");
         return;
       }else{
         moviesService.actorIdByActorName($scope.actorModel).then(function (data){
           if(data.id){
             moviesService.getMoviesByActor(moviesService.actor.id); 
+            $scope.reset(); 
           }else{
             $scope.error = moviesService.error;
             $state.go('home');

@@ -43,10 +43,9 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
   movies.emptyMoviesPull = function(){
     movies.moviesPull = [];
     movies.error = {isError:false, error:"", id:false};
-    // movies.moviesOptions = [];
-    // movies.movie = null;
   };
 
+  //Handle user clicking on X (remove movie button)
   movies.removeMovie = function(movie){
     var temp = movies.getRandMovie();
     if (temp){
@@ -58,14 +57,37 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
     }
   };
 
+  //handle user selecting V (want the movie)
   movies.chooseMovie = function(movie){
     movies.movie = movie;
     movies.moviesOptions = [];
     $state.go('result');
   };
 
-  movies.getRandomTen = function(tempMoviList){
-
+  //Get 10 random movies from array of 20 and format them
+  movies.getRandomTen = function(tempMovieList, genre){
+    var maxIterations = Math.min(tempMovieList.length, 10);
+    for(var i = 0; i < maxIterations; i++){
+      var index = Math.floor(Math.random() * tempMovieList.length);
+      //Formating
+      if(tempMovieList[index].poster_path){ 
+        tempMovieList[index].img = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + tempMovieList[index].poster_path;
+      }else if(tempMovieList[index].backdrop_path){
+        tempMovieList[index].img = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + tempMovieList[index].backdrop_path;
+      }else{
+        tempMovieList[index].img = "images/film-negatives-black.svg";
+      }
+      if(tempMovieList[index].overview == ""){
+        tempMovieList[index].overview = "Not Found";
+      }
+      if(genre){
+        tempMovieList[index].genre = genre;
+      }else{
+        tempMovieList[index].genre = movies.getGenreById(tempMovieList[index].genre_ids[0])
+      }
+      //Push the movie object into the movies pull
+      movies.moviesPull.push(tempMovieList.splice(index,1)[0]);
+    }
   };
 
   /*************server comunication***************/
@@ -80,28 +102,12 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
 
   //Ask for list of movies with the requsted genre
   movies.getMoviesByGenre = function (genre) {
-    movies.searchExpression = genre.name;
-     $http.get('/moviesByGenre' + genre.id).then(function (data) {
 
+    movies.searchExpression = genre.name;
+    $http.get('/moviesByGenre' + genre.id).then(function (data) {
       var tempMovieList = [];
       angular.copy(data.data.results, tempMovieList);
-      var randTen = Math.floor(Math.random() * 9);
-      for(var i = randTen; i < randTen+10; i++){
-        var year = tempMovieList[i].release_date.substring(0,4);
-        movies.moviesPull.push(
-          {
-            title: tempMovieList[i].title,
-            genre: genre.name,
-            overview: tempMovieList[i].overview,
-            img:'images/film-negatives-black.svg',
-            release_date: year
-          })
-          if(tempMovieList[i].backdrop_path){
-            movies.moviesPull[movies.moviesPull.length-1].img = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + tempMovieList[i].backdrop_path;
-          }else if(tempMovieList[i].poster_path){
-            movies.moviesPull[movies.moviesPull.length-1].img = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + tempMovieList[i].poster_path;
-          }
-      }
+      movies.getRandomTen(tempMovieList, genre.name);
       for(var i = 0; i < 2; i++){
         movies.moviesOptions[i] = movies.getRandMovie();
       }
@@ -130,32 +136,10 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
   movies.getMoviesByActor = function(actorId){
 
     $http.get('/moviesByActor' + actorId).then(function (data) {
-
       var tempMovieList = [];
       var start = 0;
       angular.copy(data.data.results, tempMovieList);
-
-      if(tempMovieList.length === 20){
-        start = Math.floor(Math.random() * 9);
-      }
-      var end = Math.min(tempMovieList.length, start+10);
-      for(var i = start; i < end; i++){
-      var currentGenre = movies.getGenreById(tempMovieList[i].genre_ids[0]);
-      var year = tempMovieList[i].release_date.substring(0,4);
-        movies.moviesPull.push(
-          {
-            title: tempMovieList[i].title,
-            genre: currentGenre,
-            img: 'images/film-negatives-black.svg',
-            overview: tempMovieList[i].overview,
-            release_date: year
-          })
-        if(tempMovieList[i].backdrop_path){
-          movies.moviesPull[movies.moviesPull.length-1].img = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + tempMovieList[i].backdrop_path;
-        }else if(tempMovieList[i].poster_path){
-          movies.moviesPull[movies.moviesPull.length-1].img = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + tempMovieList[i].poster_path;
-        }
-      }
+      movies.getRandomTen(tempMovieList, null);
       for(var i = 0; i < 2; i++){
         movies.moviesOptions[i] = movies.getRandMovie();
       } 
@@ -164,6 +148,5 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
   };
 
   return movies;
-
 }]);
 

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Results for: {{rendomizeExpression}}</h1>
+        <h1 class="results-title">Results for: {{rendomizeExpression}}</h1>
         <div class="col-md-6 movie-item" ng-repeat="movie in suggestedMovies track by $index">
           <h2 class="title">{{movie.title | limitTo : 35}}<span ng-if="movie.title.length>35" title="{{movie.title}}">...</span></h2>
           <div class="col-md-6">
@@ -13,7 +13,7 @@
           <div class="col-md-6 overview">
             <h3>Genre: {{movie.genre}}</h3>
             <h4>Released on: {{movie.release_date}}</h4>
-            <h4>Description:</h4><p>{{movie.overview | limitTo : 300}}<span ng-if="movie.overview.length>300" title="{{movie.overview}}">...</span></p>
+            <h4>Description: <small>{{movie.overview | limitTo : 300}}<span ng-if="movie.overview.length>300" title="{{movie.overview}}">...</span></small></h4>
           </div>
         </div>
       </div> 
