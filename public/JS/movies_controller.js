@@ -12,6 +12,7 @@ app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$sta
   $scope.suggestedMovies = moviesService.moviesOptions;
   $scope.actorModel = "";
   $scope.error = moviesService.error;
+  $scope.rendomizeExpression = moviesService.searchExpression;
  
 
   moviesService.getGenreList().then(function () {
@@ -19,7 +20,6 @@ app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$sta
     $scope.firstColGenreOptions = moviesService.genre.slice(0, Math.round(moviesService.genre.length/3));
     $scope.secondColGenreOptions = moviesService.genre.slice(Math.round(moviesService.genre.length/3),Math.round(moviesService.genre.length*2/3));
     $scope.thirdColGenreOptions = moviesService.genre.slice(Math.round(moviesService.genre.length*2/3), moviesService.genre.length);
-
   });
 
   $scope.reset = function(){
@@ -59,7 +59,7 @@ app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$sta
         // alert("Please Select Genre");
         return;
       }else{
-        moviesService.getMoviesByGenre($scope.selectedGenre);
+        moviesService.getMoviesByGenre($scope.selectedGenre); 
       }
     }else{ //Getting movies by Actor
       if($scope.actorModel === ""){
@@ -69,7 +69,7 @@ app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$sta
       }else{
         moviesService.actorIdByActorName($scope.actorModel).then(function (data){
           if(data.id){
-            moviesService.getMoviesByActor(moviesService.actor.id);
+            moviesService.getMoviesByActor(moviesService.actor.id); 
           }else{
             $scope.error = moviesService.error;
             $state.go('home');

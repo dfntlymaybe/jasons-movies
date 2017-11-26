@@ -11,8 +11,9 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
     genre: [],
     byActor: false,
     byGenre: false,
-    movie: null,
-    error:{isError:false, error:"", if:false}
+    movie: {img:'images/film-negatives-black.svg'},
+    error:{isError:false, error:"", if:false},
+    searchExpression: ""
   }
 
 /***************Helper Funcs************************/
@@ -73,14 +74,13 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
   movies.getGenreList = function () {
     return $http.get('/genre').then(function(data){
     angular.copy(data.data.genres, movies.genre);
-    console.log(movies.genre)
     // movies.genre.splice(0, 0, {id: 0, name: "Select Genre"});
     });
   };
 
   //Ask for list of movies with the requsted genre
   movies.getMoviesByGenre = function (genre) {
-
+    movies.searchExpression = genre.name;
      $http.get('/moviesByGenre' + genre.id).then(function (data) {
 
       var tempMovieList = [];
@@ -105,7 +105,7 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
       for(var i = 0; i < 2; i++){
         movies.moviesOptions[i] = movies.getRandMovie();
       }
-      $state.go('movies');
+      $state.go('movies', {}, { reload: true });
     });
   };
 
@@ -115,6 +115,7 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
     return $http.get('/actor' + actorName).then(function (data) {
       if(data.data.results.length > 0){
         movies.actor = {name: data.data.results[0].name, id: data.data.results[0].id};
+        movies.searchExpression = movies.actor.name;
         return movies.actor;
       }else{
         movies.error = {isError:true, error:"Could Not find actor: " + actorName, id:false};
@@ -157,8 +158,8 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
       }
       for(var i = 0; i < 2; i++){
         movies.moviesOptions[i] = movies.getRandMovie();
-      }
-      $state.go('movies');
+      } 
+      $state.go('movies', {}, { reload: true });
     });
   };
 
