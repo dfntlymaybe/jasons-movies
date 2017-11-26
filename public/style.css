@@ -2,7 +2,9 @@
   width: 125px;
   height: 125px;
 }
-
+.page-header {
+    margin: 20px 0 20px;
+}
 .fa-times {
   color: red;
 }
@@ -12,33 +14,67 @@
 }
 .navbar{
   border-radius: 0;
+  border-bottom: 1px solid #FFF;
 }
-.navbar-brand img{
-  max-height: 40px;
+.navbar-header img{
+  max-height: 70px;
 }
 .navbar-default .navbar-brand{
-  color: #e50914;
-  font-size: 150%;
-}
+  color: #FF0A16;
+/*  font-size: 120%;
+*/}
 h1{
   color: #fff;
   font-weight: bold;
   text-align: center;
 }
-
-/*.img-holder {position: relative;}
-
-.img-holder .right-link {
-    position: absolute;
-    top: 10px; 
-    right: 10px; 
+nav ul li a{
+  color:#FF0A16;
 }
-.img-holder .left-link {
-    position: absolute;
-    top: 10px; 
-    left: 10px; 
-}*/
+.navbar-nav>li>a:hover{
+  background-color: #000000;
+  color: #FF0A16;
+}
 
+/*Genre multi column dropdown*/
+.col-sm-4{
+  padding:0;
+  width:auto;
+}
+.multi-column-dropdown {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.dropdown-menu li a {
+  padding: 5px;
+  font-weight: 300;
+}
+.dropdown-menu.columns-3 {
+  min-width: 400px;
+}
+
+.multi-column-dropdown li a {
+  display: block;
+  clear: both;
+  line-height: 1.428571429;
+  white-space: normal;
+}
+.multi-column-dropdown li a:hover {
+  text-decoration: none;
+}
+
+.navbar, .dropdown, .dropdown-menu,
+.nav.nav-tabs > li.dropdown.open>a,
+li.dropdown.active.open,
+.nav.navbar-nav > li.dropdown.open > a{
+  background-color: #000000;
+}
+.navbar-nav{
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 100%;
+}
 .dropdownGenre{
   display: inline-block;
 }
@@ -46,11 +82,53 @@ h1{
 .dropdown{
   display: inline-block;
   font-weight: bold;
-  font-size: 150%;
+  font-size: 125%;
 }
 .dropdown button{
   margin-left: 20px;
   margin-top: 8px;
+}
+
+/*Actor form */
+.navbar-form{
+  margin-top:14px;
+}
+.form-group>input, .form-group>input.activ{
+  background-color: #000000;
+  border-radius: 0;
+  border:0;
+  outline: 0;
+  border-bottom: 2px solid #FF0A16;
+  color: #FF0A16;
+}
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.form-group>input::placeholder{
+  color: #FF0A16;
+}
+.btn-link{
+  font-weight: bold;
+  font-size:100%;
+  color:#FF0A16;
+}
+.btn-link:hover{
+  color: #fff;
+}
+.btn-link.active.focus,
+.btn-link.active:focus, 
+.btn-link.focus, 
+.btn-link.focus:active, 
+.btn-link:active:focus, 
+.btn-link:focus {
+  color:#fff;
+  outline: 0;
+  outline-offset: 0;
+  background-image: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .actors_search{
@@ -64,7 +142,7 @@ h1{
   text-align: center;
 }
 body{
-  background-color: black;
+  background-color: #000000;
 }
 .movie-image{
   width: 250px;
@@ -90,24 +168,18 @@ body{
 }
 .overview{
   color: white;
-/*  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
-  font-size: 15px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 100;
-  filter: brightness(60%)*/
 }
 .actor_input{
   display: inline-block;
   margin-left: 15px;
 }
-/*.navbar{
-  margin-top: 10px;
-  text-align: center;
-  display: inline-block;
-}*/
-.button_section{
-  background: url("https://static5.thisisinsider.com/image/573cbcd280228019008b4889-2400/13_03_15_electric_portobello%2011676-final.jpg") no-repeat center fixed;
+.home_main_section{
+/*  background: url("images/lloyd-dirks-74271.jpg");*/
+  background: url(images/cinema_main_image.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   background-size: cover;
   min-height: 300px; 
 }
@@ -115,30 +187,10 @@ body{
   height: 350;
 
 }
-
-
-
-
-
-
-/*("http://www.davidokeefe.com/Images/Products/Large/GF2%20web.jpg")*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.row:before {
+.error{
+  color: red;
+}
+/*.row:before {
   display: table;
   content: "";
 }
@@ -147,4 +199,4 @@ body{
   display: table;
   content: "";
   clear: both;
-}
+}*/

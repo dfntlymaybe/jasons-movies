@@ -7,17 +7,17 @@ app.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $url
     .state('home',{
     url:'/home',
     controller:'moviesController',
-    templateUrl:'home.html'
+    templateUrl:'../states/home.html'
     })
     .state('movies',{
       url:'/movies',
       controller: 'moviesController',
-      templateUrl: 'movies.html'
+      templateUrl: '../states/movies.html'
     })
     .state('result',{
       url:'/result',
       controller: 'moviesController',
-      templateUrl: 'result.html'
+      templateUrl: '../states/result.html'
     })
 
   $urlRouterProvider.otherwise('home');

@@ -3,12 +3,10 @@
 /*handle main client logic and comunicates with the server**/
 /***********************************************************/
 
-
 app.factory('moviesService', ['$http', '$state', function ($http, $state) {
-
   //movies obj
   var movies = {
-    moviesOptions: [],
+    moviesOptions: [{img:'images/film-negatives-black.svg'},{img:'images/film-negatives-black.svg'}],
     moviesPull: [],
     genre: [],
     byActor: false,
@@ -65,12 +63,17 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
     $state.go('result');
   };
 
+  movies.getRandomTen = function(tempMoviList){
+
+  };
+
   /*************server comunication***************/
 
   //Ask for the Genre list from the server
   movies.getGenreList = function () {
     return $http.get('/genre').then(function(data){
     angular.copy(data.data.genres, movies.genre);
+    console.log(movies.genre)
     // movies.genre.splice(0, 0, {id: 0, name: "Select Genre"});
     });
   };
@@ -90,7 +93,7 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
             title: tempMovieList[i].title,
             genre: genre.name,
             overview: tempMovieList[i].overview,
-            img:'film-negatives-black.svg',
+            img:'images/film-negatives-black.svg',
             release_date: year
           })
           if(tempMovieList[i].backdrop_path){
@@ -130,10 +133,11 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
       var tempMovieList = [];
       var start = 0;
       angular.copy(data.data.results, tempMovieList);
+
       if(tempMovieList.length === 20){
         start = Math.floor(Math.random() * 9);
       }
-      var end = Math.min(tempMovieList.length, start+10)
+      var end = Math.min(tempMovieList.length, start+10);
       for(var i = start; i < end; i++){
       var currentGenre = movies.getGenreById(tempMovieList[i].genre_ids[0]);
       var year = tempMovieList[i].release_date.substring(0,4);
@@ -141,7 +145,7 @@ app.factory('moviesService', ['$http', '$state', function ($http, $state) {
           {
             title: tempMovieList[i].title,
             genre: currentGenre,
-            img: 'film-negatives-black.svg',
+            img: 'images/film-negatives-black.svg',
             overview: tempMovieList[i].overview,
             release_date: year
           })

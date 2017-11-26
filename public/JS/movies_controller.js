@@ -16,8 +16,16 @@ app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$sta
 
   moviesService.getGenreList().then(function () {
     $scope.genreOptions = moviesService.genre;
+    $scope.firstColGenreOptions = moviesService.genre.slice(0, Math.round(moviesService.genre.length/3));
+    $scope.secondColGenreOptions = moviesService.genre.slice(Math.round(moviesService.genre.length/3),Math.round(moviesService.genre.length*2/3));
+    $scope.thirdColGenreOptions = moviesService.genre.slice(Math.round(moviesService.genre.length*2/3), moviesService.genre.length);
+
   });
 
+  $scope.reset = function(){
+    $scope.pickedActor = false;
+    $scope.pickedGenre = false;
+  }
   $scope.showGenre = function(){
     // moviesService.emptyMoviesPull();
     // $scope.error = moviesService.error;
