@@ -28,16 +28,12 @@ app.controller('moviesController', ['$scope', 'moviesService', '$window' , '$sta
     $scope.actorModel = "";
   }
   $scope.showGenre = function(){
-    // moviesService.emptyMoviesPull();
-    // $scope.error = moviesService.error;
     $scope.pickedActor = false;
     $scope.pickedGenre = true;
     moviesService.byGenre = true;
   };
 
   $scope.showActor = function(){
-    // moviesService.emptyMoviesPull();
-    // $scope.error = moviesService.error;
     $scope.pickedActor = true;
     $scope.pickedGenre = false;
     moviesService.byGenre = false;

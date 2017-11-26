@@ -1,7 +1,6 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
         <h1 class="results-title">Results for: {{rendomizeExpression}}</h1>
         <div class="col-md-6 movie-item" ng-repeat="movie in suggestedMovies track by $index">
           <h2 class="title">{{movie.title | limitTo : 35}}<span ng-if="movie.title.length>35" title="{{movie.title}}">...</span></h2>
@@ -16,7 +15,6 @@
             <h4>Description: <small>{{movie.overview | limitTo : 300}}<span ng-if="movie.overview.length>300" title="{{movie.overview}}">...</span></small></h4>
           </div>
         </div>
-      </div> 
     </div> 
   </div> 
 
