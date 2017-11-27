@@ -185,7 +185,9 @@ li.dropdown.active.open,
 .fa-check {
   color: green;
 }
-
+.Description{
+  color: #fff;
+}
 /*Results*/
 .result-movie-image{
   width: 80%;
